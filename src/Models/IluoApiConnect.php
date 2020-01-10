@@ -92,71 +92,47 @@ class IluoApiConnect extends Model
                 ->classmap([
 
                     // Handel
-                    Handel_DodajNoweZamowienie::class,
-                    Handel_DodajNoweZamowienieResponse::class,
-                    Handel_PobierzDokumentHandlowyPoId::class,
-                    Handel_PobierzDokumentHandlowyPoIdResponse::class,
-                    Handel_PobierzLokalizacjeHandlowe::class,
-                    Handel_PobierzLokalizacjeHandloweResponse::class,
-                    Handel_PobierzZamowieniePoId::class,
-                    Handel_PobierzZamowieniePoIdResponse::class,
+                    Handel_DodajNoweZamowienie::class,          Handel_DodajNoweZamowienieResponse::class,
+                    Handel_PobierzDokumentHandlowyPoId::class,  Handel_PobierzDokumentHandlowyPoIdResponse::class,
+                    Handel_PobierzLokalizacjeHandlowe::class,   Handel_PobierzLokalizacjeHandloweResponse::class,
+                    Handel_PobierzZamowieniePoId::class,        Handel_PobierzZamowieniePoIdResponse::class,
 
 
                     // Kontrahenci
-                    Kontrahenci_AktualizujKontrahenta::class,
-                    Kontrahenci_AktualizujKontrahentaResponse::class,
-                    Kontrahenci_DodajNowegoKontrahenta::class,
-                    Kontrahenci_DodajNowegoKontrahentaResponse::class,
-                    Kontrahenci_PobierzGrupy::class,
-                    Kontrahenci_PobierzGrupyResponse::class,
-                    Kontrahenci_PobierzKontrahentaPoId::class,
-                    Kontrahenci_PobierzKontrahentaPoIdResponse::class,
+                    Kontrahenci_AktualizujKontrahenta::class,   Kontrahenci_AktualizujKontrahentaResponse::class,
+                    Kontrahenci_DodajNowegoKontrahenta::class,  Kontrahenci_DodajNowegoKontrahentaResponse::class,
+                    Kontrahenci_PobierzGrupy::class,            Kontrahenci_PobierzGrupyResponse::class,
+                    Kontrahenci_PobierzKontrahentaPoId::class,  Kontrahenci_PobierzKontrahentaPoIdResponse::class,
 
 
                     // Magazyn
-                    Magazyn_PobierzDokumentMagazynowyPoId::class,
-                    Magazyn_PobierzDokumentMagazynowyPoIdResponse::class,
-                    Magazyn_PobierzDokumentMagazynowyPoNumerze::class,
-                    Magazyn_PobierzDokumentMagazynowyPoNumerzeResponse::class,
-                    Magazyn_PobierzMagazyny::class,
-                    Magazyn_PobierzMagazynyResponse::class,
+                    Magazyn_PobierzDokumentMagazynowyPoId::class,       Magazyn_PobierzDokumentMagazynowyPoIdResponse::class,
+                    Magazyn_PobierzDokumentMagazynowyPoNumerze::class,  Magazyn_PobierzDokumentMagazynowyPoNumerzeResponse::class,
+                    Magazyn_PobierzMagazyny::class,                     Magazyn_PobierzMagazynyResponse::class,
 
 
                     // Słowniki
-                    Slowniki_PobierzJednostkiMiary::class,
-                    Slowniki_PobierzJednostkiMiaryResponse::class,
-                    Slowniki_PobierzMetodyPlatnosci::class,
-                    Slowniki_PobierzMetodyPlatnosciResponse::class,
-                    Slowniki_PobierzSposobyDostawy::class,
-                    Slowniki_PobierzSposobyDostawyResponse::class,
+                    Slowniki_PobierzJednostkiMiary::class,      Slowniki_PobierzJednostkiMiaryResponse::class,
+                    Slowniki_PobierzMetodyPlatnosci::class,     Slowniki_PobierzMetodyPlatnosciResponse::class,
+                    Slowniki_PobierzSposobyDostawy::class,      Slowniki_PobierzSposobyDostawyResponse::class,
 
 
                     // Parametry
-                    Parametry_PobierzWszystkieKategorie::class,
-                    Parametry_PobierzWszystkieKategorieResponse::class,
+                    Parametry_PobierzWszystkieKategorie::class, Parametry_PobierzWszystkieKategorieResponse::class,
 
 
                     // Towar
-                    Towary_AktualizujTowarPoId::class,
-                    Towary_AktualizujTowarPoIdResponse::class,
-                    Towary_AktualizujTowarPoIndeksie::class,
-                    Towary_AktualizujTowarPoIndeksieResponse::class,
-                    Towary_DodajNowaGrupe::class,
-                    Towary_DodajNowaGrupeResponse::class,
-                    Towary_DodajNowyTowar::class,
-                    Towary_DodajNowyTowarResponse::class,
-                    Towary_PobierzGrupy::class,
-                    Towary_PobierzGrupyResponse::class,
-                    Towary_PobierzTowarPoId::class,
-                    Towary_PobierzTowarPoIdResponse::class,
-                    Towary_PobierzTowarPoIndeksie::class,
-                    Towary_PobierzTowarPoIndeksieResponse::class,
-                    Towary_PobierzTypyCen::class,
-                    Towary_PobierzTypyCenResponse::class,
+                    Towary_AktualizujTowarPoId::class,          Towary_AktualizujTowarPoIdResponse::class,
+                    Towary_AktualizujTowarPoIndeksie::class,    Towary_AktualizujTowarPoIndeksieResponse::class,
+                    Towary_DodajNowaGrupe::class,               Towary_DodajNowaGrupeResponse::class,
+                    Towary_DodajNowyTowar::class,               Towary_DodajNowyTowarResponse::class,
+                    Towary_PobierzGrupy::class,                 Towary_PobierzGrupyResponse::class,
+                    Towary_PobierzTowarPoId::class,             Towary_PobierzTowarPoIdResponse::class,
+                    Towary_PobierzTowarPoIndeksie::class,       Towary_PobierzTowarPoIndeksieResponse::class,
+                    Towary_PobierzTypyCen::class,               Towary_PobierzTypyCenResponse::class,
 
                     //Dodatkowe
-                    extended_GetQueryResults::class,
-                    extended_GetQueryResultsResponse::class,
+                    extended_GetQueryResults::class,            extended_GetQueryResultsResponse::class,
                 ]);
         });
     }
@@ -293,12 +269,37 @@ class IluoApiConnect extends Model
 
 
     ///
+    /// Query
+    ///
+
+    // Pobranie czy dokument handlowy rozliczony
+    public function api_PobierzRozliczeniaDokumentu($id){
+        return $this->GetQueryResults("exec api_PobierzRozliczeniaDokumentu {$id}");
+    }
+
+    // Pobieranie ceny sprzedaży oraz ceny zakupu
+    public function api_PobierzWartosciDokumentuHandlowegoDlaKalkulacjiZysku($id){
+        return $this->GetQueryResults("exec api_PobierzWartosciDokumentuHandlowegoDlaKalkulacjiZysku {$id}");
+    }
+
+    // Pobieranie ceny sprzedaży oraz ceny zakupu
+    public function api_PobieranieOpiekunaDokumentuHandlowego($id){
+        return $this->GetQueryResults("select Imie1 as Imie, Nazwisko, IdPracownika  from praPracownik where IdPracownika = (select IdOpiekuna from hanDokumentHandlowy where IdDokumentu = {$id}");
+    }
+
+    // Pobieranie stanu magazynowego dla towaru o Id
+    public function api_PobieranieCalegoStanuMagazynowegoTowaru($id){
+        return $this->GetQueryResults("select (ilosc+iloscZablokowana+IloscZarezerwowana) as StanMagazynowy from magVwStanOgolnyTowaru where IdTowaru = {$id}");
+    }
+
+
+
+    ///
     /// Inne
     ///
 
     // zapytanie bezpośrednie do bazy SQL Iluo
-    public function GetQueryResults($query)
-    {
+    public function GetQueryResults($query){
         $response = $this->soapWrapper->call('Iluo.extended_GetQueryResults', [new extended_GetQueryResults($this->__sessionId(), $query)]);
         $xml = preg_replace('/(<\?xml[^?]+?)utf-16/i', '$1utf-8', $response->extended_GetQueryResultsResult());
         $xml = simplexml_load_string($xml);
@@ -310,8 +311,7 @@ class IluoApiConnect extends Model
     }
 
     // Pobieranie klucza sesji
-    public function __sessionId()
-    {
+    public function __sessionId(){
         $iluo["accountName"] = config('iluo.account');
         $iluo["accountToken"] = config('iluo.token');
 
@@ -330,4 +330,5 @@ class IluoApiConnect extends Model
 
         return $soapWrapper->call('IluoConfig.GetServiceAddressAndPort', [$iluo])->GetServiceAddressAndPortResult;
     }
+
 }
