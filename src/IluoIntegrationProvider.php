@@ -66,7 +66,6 @@ class IluoIntegrationProvider extends ServiceProvider
      */
     public function register()
     {
-
         include __DIR__.'/routes/web.php';
         $this->app->make('serwin35\IluoIntegration\IluoController');
 
