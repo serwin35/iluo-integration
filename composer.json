@@ -1,0 +1,61 @@
+{
+    "name": "serwin35/iluo-integration",
+    "description": "Laravel Iluo integration.",
+    "keywords": [
+        "laravel",
+        "iluo"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "serwin35",
+            "email": "mateusz.serwinowski@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "illuminate/auth": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+        "illuminate/bus": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+        "illuminate/console": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+        "illuminate/contracts": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+        "illuminate/database": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+        "illuminate/http": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+        "illuminate/notifications": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+        "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.5|^4.0|^5.0",
+        "phpunit/phpunit": "^6.0|^7.0|^8.0",
+        "artisaninweb/laravel-soap": "0.3.0.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "serwin35\\IluoIntegration\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "serwin35\\IluoIntegration\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "serwin35\\IluoIntegration\\IluoIntegrationProvider"
+            ]
+        }
+    },
+    "suggest": {
+        "guzzlehttp/guzzle": "Required to use the Slack transport (~6.0)",
+        "artisaninweb/laravel-soap": "0.3.0.9",
+        "nexmo/client": "Required to use the Nexmo transport (~1.0)."
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
