@@ -7,7 +7,6 @@ use Illuminate\Support\ServiceProvider;
 
 class IluoIntegrationProvider extends ServiceProvider
 {
-    use EventMap;
 
     /**
      * Bootstrap the application services.
@@ -16,7 +15,7 @@ class IluoIntegrationProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerEvents();
+        //$this->registerEvents();
 /*
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'authentication-log');
 
@@ -48,7 +47,6 @@ class IluoIntegrationProvider extends ServiceProvider
      * Register the Iluo events.
      *
      * @return void
-     */
     protected function registerEvents()
     {
         $events = $this->app->make(Dispatcher::class);
@@ -59,6 +57,7 @@ class IluoIntegrationProvider extends ServiceProvider
             }
         }
     }
+     */
 
     /**
      * Register the application services.
