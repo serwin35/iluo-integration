@@ -39,6 +39,8 @@ use serwin35\IluoIntegration\Models\Slowniki\Slowniki_PobierzSposobyDostawyRespo
 
 
 // Magazyn
+use serwin35\IluoIntegration\Models\Magazyn\Magazyn_AktualizujDokumentMagazynowy;
+use serwin35\IluoIntegration\Models\Magazyn\Magazyn_AktualizujDokumentMagazynowyResponse;
 use serwin35\IluoIntegration\Models\Magazyn\Magazyn_PobierzDokumentMagazynowyPoId;
 use serwin35\IluoIntegration\Models\Magazyn\Magazyn_PobierzDokumentMagazynowyPoIdResponse;
 use serwin35\IluoIntegration\Models\Magazyn\Magazyn_PobierzDokumentMagazynowyPoNumerze;
@@ -106,6 +108,7 @@ class IluoApiConnect extends Model
 
 
                     // Magazyn
+                    Magazyn_AktualizujDokumentMagazynowy::class,        Magazyn_AktualizujDokumentMagazynowyResponse::class,
                     Magazyn_PobierzDokumentMagazynowyPoId::class,       Magazyn_PobierzDokumentMagazynowyPoIdResponse::class,
                     Magazyn_PobierzDokumentMagazynowyPoNumerze::class,  Magazyn_PobierzDokumentMagazynowyPoNumerzeResponse::class,
                     Magazyn_PobierzMagazyny::class,                     Magazyn_PobierzMagazynyResponse::class,
@@ -186,6 +189,12 @@ class IluoApiConnect extends Model
     ///
     /// Dokumenty magazynowe
     ///
+
+    public function Magazyn_AktualizujDokumentMagazynowy($idDokumentu, $dokumentMagazynowy)
+    {
+        $response = $this->soapWrapper->call('Iluo.Magazyn_AktualizujDokumentMagazynowy', [new Magazyn_AktualizujDokumentMagazynowy($this->__sessionId(), $idDokumentu, $dokumentMagazynowy)]);
+        return $response;
+    }
 
     public function Magazyn_PobierzDokumentMagazynowyPoId($id){
         return $this->soapWrapper->call('Iluo.Magazyn_PobierzDokumentMagazynowyPoId', [new Magazyn_PobierzDokumentMagazynowyPoId($this->__sessionId(), $id)])->get();
