@@ -77,6 +77,9 @@ use serwin35\IluoIntegration\Models\Towary\Towary_PobierzTypyCenResponse;
 use serwin35\IluoIntegration\Models\extended_GetQueryResults;
 use serwin35\IluoIntegration\Models\extended_GetQueryResultsResponse;
 
+use serwin35\IluoIntegration\Models\Tagi_PobierzIdTagowDlaObiektu;
+use serwin35\IluoIntegration\Models\Tagi_PobierzIdTagowDlaObiektuResponse;
+
 class IluoApiConnect extends Model
 {
 
@@ -136,6 +139,7 @@ class IluoApiConnect extends Model
 
                     //Dodatkowe
                     extended_GetQueryResults::class,            extended_GetQueryResultsResponse::class,
+                    Tagi_PobierzIdTagowDlaObiektu::class,            Tagi_PobierzIdTagowDlaObiektuResponse::class,
                 ]);
         });
     }
@@ -306,6 +310,13 @@ class IluoApiConnect extends Model
     ///
     /// Inne
     ///
+
+    // Pobieranie tagów dla konkretnego wpisu
+    public function Tagi_PobierzIdTagowDlaObiektu($idtabeli, $id)
+    {
+        $response = $this->soapWrapper->call('Iluo.Tagi_PobierzIdTagowDlaObiektu', [new Tagi_PobierzIdTagowDlaObiektu($this->__sessionId(), $idtabeli, $id)]);
+        return $response->get();
+    }
 
     // zapytanie bezpośrednie do bazy SQL Iluo
     public function GetQueryResults($query){
