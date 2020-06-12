@@ -3,7 +3,6 @@
 namespace serwin35\IluoIntegration\Model;
 
 // Init Model
-use Illuminate\Database\Eloquent\Model;
 use Artisaninweb\SoapWrapper\SoapWrapper;
 
 
@@ -84,7 +83,7 @@ use serwin35\IluoIntegration\Models\extended_GetQueryResultsResponse;
 use serwin35\IluoIntegration\Models\Tagi_PobierzIdTagowDlaObiektu;
 use serwin35\IluoIntegration\Models\Tagi_PobierzIdTagowDlaObiektuResponse;
 
-class IluoApiConnect extends Model
+class IluoApiConnect
 {
 
     protected $soapWrapper;

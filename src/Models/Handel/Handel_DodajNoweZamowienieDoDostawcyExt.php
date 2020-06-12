@@ -2,7 +2,7 @@
 
 namespace serwin35\IluoIntegration\Models\Handel;
 
-class Handel_DodajNoweZamowienieOdOdbiorcyExt{
+class Handel_DodajNoweZamowienieDoDostawcyExt{
 
   protected $sessionId;
 
@@ -33,18 +33,18 @@ class Handel_DodajNoweZamowienieOdOdbiorcyExt{
   }
 }
 
-class Handel_DodajNoweZamowienieOdOdbiorcyExtResponse
+class Handel_DodajNoweZamowienieDoDostawcyExtResponse
 {
 
-  protected $Handel_DodajNoweZamowienieOdOdbiorcyExtResult;
+  protected $Handel_DodajNoweZamowienieDoDostawcyExtResult;
 
-  public function __construct($Handel_DodajNoweZamowienieOdOdbiorcyExtResult)
+  public function __construct($Handel_DodajNoweZamowienieDoDostawcyExtResult)
   {
-    $this->Handel_DodajNoweZamowienieOdOdbiorcyExtResult = $Handel_DodajNoweZamowienieOdOdbiorcyExtResult;
+    $this->Handel_DodajNoweZamowienieDoDostawcyExtResult = $Handel_DodajNoweZamowienieDoDostawcyExtResult;
   }
 
   public function get()
   {
-    return $this->Handel_DodajNoweZamowienieOdOdbiorcyExtResult;
+    return $this->Handel_DodajNoweZamowienieDoDostawcyExtResult;
   }
 }
