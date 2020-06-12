@@ -1,6 +1,6 @@
 <?php
 
-namespace serwin35\IluoIntegration;
+namespace serwin35\IluoIntegration\Model;
 
 // Init Model
 use Illuminate\Database\Eloquent\Model;
