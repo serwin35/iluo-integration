@@ -1,6 +1,6 @@
 <?php
 
-namespace serwin35\IluoIntegration\Model;
+namespace serwin35\IluoIntegration\Models;
 
 // Init Model
 use Artisaninweb\SoapWrapper\SoapWrapper;
