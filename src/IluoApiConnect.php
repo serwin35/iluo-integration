@@ -1,6 +1,6 @@
 <?php
 
-namespace serwin35\IluoIntegration\Models;
+namespace serwin35\IluoIntegration;
 
 // Init Model
 use Illuminate\Database\Eloquent\Model;
@@ -10,6 +10,10 @@ use Artisaninweb\SoapWrapper\SoapWrapper;
 // Handel
 use serwin35\IluoIntegration\Models\Handel\Handel_DodajNoweZamowienie;
 use serwin35\IluoIntegration\Models\Handel\Handel_DodajNoweZamowienieResponse;
+use serwin35\IluoIntegration\Models\Handel\Handel_DodajNoweZamowienieDoDostawcyExt;
+use serwin35\IluoIntegration\Models\Handel\Handel_DodajNoweZamowienieDoDostawcyExtResponse;
+use serwin35\IluoIntegration\Models\Handel\Handel_DodajNoweZamowienieOdOdbiorcyExt;
+use serwin35\IluoIntegration\Models\Handel\Handel_DodajNoweZamowienieOdOdbiorcyExtResponse;
 use serwin35\IluoIntegration\Models\Handel\Handel_PobierzDokumentHandlowyPoId;
 use serwin35\IluoIntegration\Models\Handel\Handel_PobierzDokumentHandlowyPoIdResponse;
 use serwin35\IluoIntegration\Models\Handel\Handel_PobierzLokalizacjeHandlowe;
@@ -97,10 +101,12 @@ class IluoApiConnect extends Model
                 ->classmap([
 
                     // Handel
-                    Handel_DodajNoweZamowienie::class,          Handel_DodajNoweZamowienieResponse::class,
-                    Handel_PobierzDokumentHandlowyPoId::class,  Handel_PobierzDokumentHandlowyPoIdResponse::class,
-                    Handel_PobierzLokalizacjeHandlowe::class,   Handel_PobierzLokalizacjeHandloweResponse::class,
-                    Handel_PobierzZamowieniePoId::class,        Handel_PobierzZamowieniePoIdResponse::class,
+                    Handel_DodajNoweZamowienie::class,                  Handel_DodajNoweZamowienieResponse::class,
+                    Handel_DodajNoweZamowienieDoDostawcyExtExt::class,  Handel_DodajNoweZamowienieDoDostawcyExtResponse::class,
+                    Handel_DodajNoweZamowienieOdOdbiorcyExt::class,     Handel_DodajNoweZamowienieOdOdbiorcyExtResponse::class,
+                    Handel_PobierzDokumentHandlowyPoId::class,          Handel_PobierzDokumentHandlowyPoIdResponse::class,
+                    Handel_PobierzLokalizacjeHandlowe::class,           Handel_PobierzLokalizacjeHandloweResponse::class,
+                    Handel_PobierzZamowieniePoId::class,                Handel_PobierzZamowieniePoIdResponse::class,
 
 
                     // Kontrahenci
@@ -152,6 +158,14 @@ class IluoApiConnect extends Model
 
     public function Handel_DodajNoweZamowienie($zamowienie, $zarezerwujTowar){
         return $this->soapWrapper->call('Iluo.Handel_DodajNoweZamowienie', [new Handel_DodajNoweZamowienie($this->__sessionId(), $zamowienie, $zarezerwujTowar)]);
+    }
+
+    public function Handel_DodajNoweZamowienieDoDostawcyExt($zamowienie, $parametry){
+        return $this->soapWrapper->call('Iluo.Handel_DodajNoweZamowienieDoDostawcyExt', [new Handel_DodajNoweZamowienieDoDostawcyExt($this->__sessionId(), $zamowienie, $parametry)]);
+    }
+
+    public function Handel_DodajNoweZamowienieOdOdbiorcyExt($zamowienie, $parametry){
+        return $this->soapWrapper->call('Iluo.Handel_DodajNoweZamowienieOdOdbiorcyExt', [new Handel_DodajNoweZamowienieOdOdbiorcyExt($this->__sessionId(), $zamowienie, $parametry)]);
     }
 
     public function Handel_PobierzDokumentHandlowyPoId($id){
