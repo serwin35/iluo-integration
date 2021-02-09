@@ -82,6 +82,10 @@ use serwin35\IluoIntegration\Models\extended_GetQueryResultsResponse;
 
 use serwin35\IluoIntegration\Models\Tagi_PobierzIdTagowDlaObiektu;
 use serwin35\IluoIntegration\Models\Tagi_PobierzIdTagowDlaObiektuResponse;
+use serwin35\IluoIntegration\Models\Tagi_UstawTagiDlaObiektu;
+use serwin35\IluoIntegration\Models\Tagi_UstawTagiDlaObiektuResponse;
+use serwin35\IluoIntegration\Models\Sys_PobierzTabeleSystemowe;
+use serwin35\IluoIntegration\Models\Sys_PobierzTabeleSystemoweResponse;
 
 class IluoApiConnect
 {
@@ -96,7 +100,7 @@ class IluoApiConnect
 
         $this->soapWrapper = new SoapWrapper;
         $this->soapWrapper->add('Iluo', function ($service) {
-            $service->wsdl('http://'.self::getPort().'/ILUO-API-v3.0?WSDL')->trace(true)->cache(WSDL_CACHE_NONE)->options(['exceptions' => true, 'stream_context' => stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false,)))])
+            $service->wsdl('http://' . self::getPort() . '/ILUO-API-v3.0?WSDL')->trace(true)->cache(WSDL_CACHE_NONE)->options(['exceptions' => true, 'stream_context' => stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false,)))])
                 ->classmap([
 
                     // Handel
@@ -144,7 +148,9 @@ class IluoApiConnect
 
                     //Dodatkowe
                     extended_GetQueryResults::class,            extended_GetQueryResultsResponse::class,
-                    Tagi_PobierzIdTagowDlaObiektu::class,            Tagi_PobierzIdTagowDlaObiektuResponse::class,
+                    Tagi_PobierzIdTagowDlaObiektu::class,       Tagi_PobierzIdTagowDlaObiektuResponse::class,
+                    Tagi_UstawTagiDlaObiektu::class,            Tagi_UstawTagiDlaObiektuResponse::class,
+                    Sys_PobierzTabeleSystemowe::class,          Sys_PobierzTabeleSystemoweResponse::class,
                 ]);
         });
     }
@@ -155,27 +161,33 @@ class IluoApiConnect
     /// Dokumenty Handlowe
     ///
 
-    public function Handel_DodajNoweZamowienie($zamowienie, $zarezerwujTowar){
+    public function Handel_DodajNoweZamowienie($zamowienie, $zarezerwujTowar)
+    {
         return $this->soapWrapper->call('Iluo.Handel_DodajNoweZamowienie', [new Handel_DodajNoweZamowienie($this->__sessionId(), $zamowienie, $zarezerwujTowar)]);
     }
 
-    public function Handel_DodajNoweZamowienieDoDostawcyExt($zamowienie, $parametry){
+    public function Handel_DodajNoweZamowienieDoDostawcyExt($zamowienie, $parametry)
+    {
         return $this->soapWrapper->call('Iluo.Handel_DodajNoweZamowienieDoDostawcyExt', [new Handel_DodajNoweZamowienieDoDostawcyExt($this->__sessionId(), $zamowienie, $parametry)]);
     }
 
-    public function Handel_DodajNoweZamowienieOdOdbiorcyExt($zamowienie, $parametry){
+    public function Handel_DodajNoweZamowienieOdOdbiorcyExt($zamowienie, $parametry)
+    {
         return $this->soapWrapper->call('Iluo.Handel_DodajNoweZamowienieOdOdbiorcyExt', [new Handel_DodajNoweZamowienieOdOdbiorcyExt($this->__sessionId(), $zamowienie, $parametry)]);
     }
 
-    public function Handel_PobierzDokumentHandlowyPoId($id){
+    public function Handel_PobierzDokumentHandlowyPoId($id)
+    {
         return $this->soapWrapper->call('Iluo.Handel_PobierzDokumentHandlowyPoId', [new Handel_PobierzDokumentHandlowyPoId($this->__sessionId(), $id)])->get();
     }
 
-    public function Handel_PobierzLokalizacjeHandlowe(){
+    public function Handel_PobierzLokalizacjeHandlowe()
+    {
         return $this->soapWrapper->call('Iluo.Handel_PobierzLokalizacjeHandlowe', [new Handel_PobierzLokalizacjeHandlowe($this->__sessionId())])->get();
     }
 
-    public function Handel_PobierzZamowieniePoId($id){
+    public function Handel_PobierzZamowieniePoId($id)
+    {
         return $this->soapWrapper->call('Iluo.Handel_PobierzZamowieniePoId', [new Handel_PobierzZamowieniePoId($this->__sessionId(), $id)])->get();
     }
 
@@ -185,19 +197,23 @@ class IluoApiConnect
     /// Kontrahenci
     ///
 
-    public function Kontrahenci_AktualizujKontrahenta($id, $kontrahent){
+    public function Kontrahenci_AktualizujKontrahenta($id, $kontrahent)
+    {
         return $this->soapWrapper->call('Iluo.Kontrahenci_AktualizujKontrahenta', [new Kontrahenci_AktualizujKontrahenta($this->__sessionId(), $id, $kontrahent)])->get();
     }
 
-    public function Kontrahenci_DodajNowegoKontrahenta($kontrahent){
+    public function Kontrahenci_DodajNowegoKontrahenta($kontrahent)
+    {
         return $this->soapWrapper->call('Iluo.Kontrahenci_DodajNowegoKontrahenta', [new Kontrahenci_DodajNowegoKontrahenta($this->__sessionId(), $kontrahent)])->get();
     }
 
-    public function Kontrahenci_PobierzGrupy(){
+    public function Kontrahenci_PobierzGrupy()
+    {
         return $this->soapWrapper->call('Iluo.Kontrahenci_PobierzGrupy', [new Kontrahenci_PobierzGrupy($this->__sessionId())])->get();
     }
 
-    public function Kontrahenci_PobierzKontrahentaPoId($id){
+    public function Kontrahenci_PobierzKontrahentaPoId($id)
+    {
         return $this->soapWrapper->call('Iluo.Kontrahenci_PobierzKontrahentaPoId', [new Kontrahenci_PobierzKontrahentaPoId($this->__sessionId(), $id)])->get();
     }
 
@@ -213,15 +229,18 @@ class IluoApiConnect
         return $response;
     }
 
-    public function Magazyn_PobierzDokumentMagazynowyPoId($id){
+    public function Magazyn_PobierzDokumentMagazynowyPoId($id)
+    {
         return $this->soapWrapper->call('Iluo.Magazyn_PobierzDokumentMagazynowyPoId', [new Magazyn_PobierzDokumentMagazynowyPoId($this->__sessionId(), $id)])->get();
     }
 
-    public function Magazyn_PobierzDokumentMagazynowyPoNumerze($numer){
+    public function Magazyn_PobierzDokumentMagazynowyPoNumerze($numer)
+    {
         return $this->soapWrapper->call('Iluo.Magazyn_PobierzDokumentMagazynowyPoNumerze', [new Magazyn_PobierzDokumentMagazynowyPoNumerze($this->__sessionId(), $numer)])->get();
     }
 
-    public function Magazyn_PobierzMagazyny(){
+    public function Magazyn_PobierzMagazyny()
+    {
         return $this->soapWrapper->call('Iluo.Magazyn_PobierzMagazyny', [new Magazyn_PobierzMagazyny($this->__sessionId())])->get();
     }
 
@@ -231,7 +250,8 @@ class IluoApiConnect
     /// Parametry
     ///
 
-    public function ParametryPobierzWszystkieKategorie(){
+    public function ParametryPobierzWszystkieKategorie()
+    {
         return $this->soapWrapper->call('Iluo.Parametry_PobierzWszystkieKategorie', [new Parametry_PobierzWszystkieKategorie($this->__sessionId())])->get();
     }
 
@@ -241,15 +261,18 @@ class IluoApiConnect
     /// Słowniki
     ///
 
-    public function Slowniki_PobierzJednostkiMiary(){
+    public function Slowniki_PobierzJednostkiMiary()
+    {
         return $this->soapWrapper->call('Iluo.Slowniki_PobierzJednostkiMiary', [new Slowniki_PobierzJednostkiMiary($this->__sessionId())])->get();
     }
 
-    public function Slowniki_PobierzMetodyPlatnosci(){
+    public function Slowniki_PobierzMetodyPlatnosci()
+    {
         return $this->soapWrapper->call('Iluo.Slowniki_PobierzMetodyPlatnosci', [new Slowniki_PobierzMetodyPlatnosci($this->__sessionId())])->get();
     }
 
-    public function Slowniki_PobierzSposobyDostawy(){
+    public function Slowniki_PobierzSposobyDostawy()
+    {
         return $this->soapWrapper->call('Iluo.Slowniki_PobierzSposobyDostawy', [new Slowniki_PobierzSposobyDostawy($this->__sessionId())])->get();
     }
 
@@ -259,35 +282,43 @@ class IluoApiConnect
     /// Towary
     ///
 
-    public function Towary_AktualizujTowarPoId($id, $towar){
+    public function Towary_AktualizujTowarPoId($id, $towar)
+    {
         return $this->soapWrapper->call('Iluo.Towary_AktualizujTowarPoId', [new Towary_AktualizujTowarPoId($this->__sessionId(), $id, $towar)])->get();
     }
 
-    public function Towary_AktualizujTowarPoIndeksie($indeks, $towar){
+    public function Towary_AktualizujTowarPoIndeksie($indeks, $towar)
+    {
         return $this->soapWrapper->call('Iluo.Towary_AktualizujTowarPoIndeksie', [new Towary_AktualizujTowarPoIndeksie($this->__sessionId(), $indeks, $towar)])->get();
     }
 
-    public function Towary_DodajNowaGrupe($grupaTowaru){
+    public function Towary_DodajNowaGrupe($grupaTowaru)
+    {
         return $this->soapWrapper->call('Iluo.Towary_DodajNowaGrupe', [new Towary_DodajNowaGrupe($this->__sessionId(), $grupaTowaru)])->get();
     }
 
-    public function Towary_DodajNowyTowar($towar){
+    public function Towary_DodajNowyTowar($towar)
+    {
         return $this->soapWrapper->call('Iluo.Towary_DodajNowyTowar', [new Towary_DodajNowyTowar($this->__sessionId(), $towar)])->get();
     }
 
-    public function Towary_PobierzGrupy(){
+    public function Towary_PobierzGrupy()
+    {
         return $this->soapWrapper->call('Iluo.Towary_PobierzGrupy', [new Towary_PobierzGrupy($this->__sessionId())])->get();
     }
 
-    public function Towary_PobierzTowarPoId($id, $pobierzWarianty = true){
+    public function Towary_PobierzTowarPoId($id, $pobierzWarianty = true)
+    {
         return $this->soapWrapper->call('Iluo.Towary_PobierzTowarPoId', [new Towary_PobierzTowarPoId($this->__sessionId(), $id, $pobierzWarianty)])->get();
     }
 
-    public function Towary_PobierzTowarPoIndeksie($indeks, $pobierzWarianty = true){
+    public function Towary_PobierzTowarPoIndeksie($indeks, $pobierzWarianty = true)
+    {
         return $this->soapWrapper->call('Iluo.Towary_PobierzTowarPoIndeksie', [new Towary_PobierzTowarPoIndeksie($this->__sessionId(), $indeks, $pobierzWarianty)])->get();
     }
 
-    public function Towary_PobierzTypyCen(){
+    public function Towary_PobierzTypyCen()
+    {
         $response = $this->soapWrapper->call('Iluo.Towary_PobierzTypyCen', [new Towary_PobierzTypyCen($this->__sessionId())]);
         return $response->get();
     }
@@ -299,22 +330,26 @@ class IluoApiConnect
     ///
 
     // Pobranie czy dokument handlowy rozliczony
-    public function api_PobierzRozliczeniaDokumentu($id){
+    public function api_PobierzRozliczeniaDokumentu($id)
+    {
         return $this->GetQueryResults("exec api_PobierzRozliczeniaDokumentu {$id}");
     }
 
     // Pobieranie ceny sprzedaży oraz ceny zakupu
-    public function api_PobierzWartosciDokumentuHandlowegoDlaKalkulacjiZysku($id){
+    public function api_PobierzWartosciDokumentuHandlowegoDlaKalkulacjiZysku($id)
+    {
         return $this->GetQueryResults("exec api_PobierzWartosciDokumentuHandlowegoDlaKalkulacjiZysku {$id}");
     }
 
     // Pobieranie ceny sprzedaży oraz ceny zakupu
-    public function api_PobieranieOpiekunaDokumentuHandlowego($id){
+    public function api_PobieranieOpiekunaDokumentuHandlowego($id)
+    {
         return $this->GetQueryResults("select Imie1 as Imie, Nazwisko, IdPracownika  from praPracownik where IdPracownika = (select IdOpiekuna from hanDokumentHandlowy where IdDokumentu = {$id}");
     }
 
     // Pobieranie stanu magazynowego dla towaru o Id
-    public function api_PobieranieCalegoStanuMagazynowegoTowaru($id){
+    public function api_PobieranieCalegoStanuMagazynowegoTowaru($id)
+    {
         return $this->GetQueryResults("select (ilosc+iloscZablokowana+IloscZarezerwowana) as StanMagazynowy from magVwStanOgolnyTowaru where IdTowaru = {$id}");
     }
 
@@ -331,8 +366,23 @@ class IluoApiConnect
         return $response->get();
     }
 
+    // Pobieranie tagów dla konkretnego wpisu
+    public function Tagi_UstawTagiDlaObiektu($idtabeli, $id, $idtagow)
+    {
+        $response = $this->soapWrapper->call('Iluo.Tagi_UstawTagiDlaObiektu', [new Tagi_UstawTagiDlaObiektu($this->__sessionId(), $idtabeli, $id, $idtagow)]);
+        return $response->get();
+    }
+
+    // Pobieranie tagów dla konkretnego wpisu
+    public function Sys_PobierzTabeleSystemowe()
+    {
+        $response = $this->soapWrapper->call('Iluo.Sys_PobierzTabeleSystemowe', [new Sys_PobierzTabeleSystemowe($this->__sessionId())]);
+        return $response->get();
+    }
+
     // zapytanie bezpośrednie do bazy SQL Iluo
-    public function GetQueryResults($query){
+    public function GetQueryResults($query)
+    {
         $response = $this->soapWrapper->call('Iluo.extended_GetQueryResults', [new extended_GetQueryResults($this->__sessionId(), $query)]);
         $xml = preg_replace('/(<\?xml[^?]+?)utf-16/i', '$1utf-8', $response->extended_GetQueryResultsResult());
         $xml = simplexml_load_string($xml);
@@ -344,7 +394,8 @@ class IluoApiConnect
     }
 
     // Pobieranie klucza sesji
-    public function __sessionId(){
+    public function __sessionId()
+    {
         $iluo["accountName"] = config('iluo.account');
         $iluo["accountToken"] = config('iluo.token');
 
@@ -352,16 +403,16 @@ class IluoApiConnect
     }
 
     // Pobieranie portu
-    public static function getPort(){
+    public static function getPort()
+    {
         $iluo["accountName"] = config('iluo.account');
         $iluo["token"] = config('iluo.token');
 
         $soapWrapper = new SoapWrapper;
         $soapWrapper->add('IluoConfig', function ($service) {
-            $service->wsdl('http://'.config('iluo.host').':8800/ILUO-Dispatch?wsdl')->trace(true);
+            $service->wsdl('http://' . config('iluo.host') . ':8800/ILUO-Dispatch?wsdl')->trace(true);
         });
 
         return $soapWrapper->call('IluoConfig.GetServiceAddressAndPort', [$iluo])->GetServiceAddressAndPortResult;
     }
-
 }
