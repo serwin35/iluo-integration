@@ -51,6 +51,6 @@ class Tagi_UstawTagiDlaObiektuResponse
 
   public function get()
   {
-    return $this->Tagi_UstawTagiDlaObiektu;
+    return $this->Tagi_UstawTagiDlaObiektuResult;
   }
 }

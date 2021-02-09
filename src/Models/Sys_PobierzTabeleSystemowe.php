@@ -20,7 +20,6 @@ class Sys_PobierzTabeleSystemowe
 
 class Sys_PobierzTabeleSystemoweResponse
 {
-
   protected $Sys_PobierzTabeleSystemoweResult;
 
   public function __construct($Sys_PobierzTabeleSystemoweResult)
@@ -30,6 +29,6 @@ class Sys_PobierzTabeleSystemoweResponse
 
   public function get()
   {
-    return $this->Sys_PobierzTabeleSystemowe;
+    return $this->Sys_PobierzTabeleSystemoweResult;
   }
 }
