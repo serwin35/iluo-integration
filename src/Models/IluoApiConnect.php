@@ -84,6 +84,8 @@ use serwin35\IluoIntegration\Models\Tagi_PobierzIdTagowDlaObiektu;
 use serwin35\IluoIntegration\Models\Tagi_PobierzIdTagowDlaObiektuResponse;
 use serwin35\IluoIntegration\Models\Tagi_UstawTagiDlaObiektu;
 use serwin35\IluoIntegration\Models\Tagi_UstawTagiDlaObiektuResponse;
+use serwin35\IluoIntegration\Models\Tagi_PobierzTag;
+use serwin35\IluoIntegration\Models\Tagi_PobierzTagResponse;
 use serwin35\IluoIntegration\Models\Sys_PobierzTabeleSystemowe;
 use serwin35\IluoIntegration\Models\Sys_PobierzTabeleSystemoweResponse;
 
@@ -148,6 +150,7 @@ class IluoApiConnect
 
                     //Dodatkowe
                     extended_GetQueryResults::class,            extended_GetQueryResultsResponse::class,
+                    Tagi_PobierzTag::class,                     Tagi_PobierzTagResponse::class,
                     Tagi_PobierzIdTagowDlaObiektu::class,       Tagi_PobierzIdTagowDlaObiektuResponse::class,
                     Tagi_UstawTagiDlaObiektu::class,            Tagi_UstawTagiDlaObiektuResponse::class,
                     Sys_PobierzTabeleSystemowe::class,          Sys_PobierzTabeleSystemoweResponse::class,
@@ -370,6 +373,12 @@ class IluoApiConnect
     public function Tagi_UstawTagiDlaObiektu($idtabeli, $id, $idtagow)
     {
         $response = $this->soapWrapper->call('Iluo.Tagi_UstawTagiDlaObiektu', [new Tagi_UstawTagiDlaObiektu($this->__sessionId(), $idtabeli, $id, $idtagow)]);
+        return $response->get();
+    }
+    // Pobieranie tagów dla konkretnego wpisu
+    public function Tagi_PobierzTag($id)
+    {
+        $response = $this->soapWrapper->call('Iluo.Tagi_PobierzTag', [new Tagi_PobierzTag($this->__sessionId(), $id)]);
         return $response->get();
     }
 
