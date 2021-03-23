@@ -74,6 +74,10 @@ use serwin35\IluoIntegration\Models\Towary\Towary_PobierzTowarPoIndeksie;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzTowarPoIndeksieResponse;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzTypyCen;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzTypyCenResponse;
+use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowy;
+use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyResponse;
+use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantow;
+use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantowResponse;
 
 
 //Dodatkowe
@@ -147,6 +151,8 @@ class IluoApiConnect
                     Towary_PobierzTowarPoId::class,             Towary_PobierzTowarPoIdResponse::class,
                     Towary_PobierzTowarPoIndeksie::class,       Towary_PobierzTowarPoIndeksieResponse::class,
                     Towary_PobierzTypyCen::class,               Towary_PobierzTypyCenResponse::class,
+                    Towary_PobierzStanMagazynowy::class,        Towary_PobierzStanMagazynowyResponse::class,
+                    Towary_PobierzStanMagazynowyWariantow::class,Towary_PobierzStanMagazynowyWariantowResponse::class,
 
                     //Dodatkowe
                     extended_GetQueryResults::class,            extended_GetQueryResultsResponse::class,
@@ -323,6 +329,18 @@ class IluoApiConnect
     public function Towary_PobierzTypyCen()
     {
         $response = $this->soapWrapper->call('Iluo.Towary_PobierzTypyCen', [new Towary_PobierzTypyCen($this->__sessionId())]);
+        return $response->get();
+    }
+
+    public function Towary_PobierzStanMagazynowy($idTowaru, $idMagazynu, $razemZRezerwacjami = false)
+    {
+        $response = $this->soapWrapper->call('Iluo.Towary_PobierzStanMagazynowy', [new Towary_PobierzStanMagazynowy($this->__sessionId(), $idTowaru, $idMagazynu, $razemZRezerwacjami)]);
+        return $response->get();
+    }
+
+    public function Towary_PobierzStanMagazynowyWariantow($idTowaru, $idMagazynu, $razemZRezerwacjami = false)
+    {
+        $response = $this->soapWrapper->call('Iluo.Towary_PobierzStanMagazynowyWariantow', [new Towary_PobierzStanMagazynowyWariantow($this->__sessionId(), $idTowaru, $idMagazynu, $razemZRezerwacjami)]);
         return $response->get();
     }
 
