@@ -5,14 +5,12 @@ namespace serwin35\IluoIntegration\Models;
 // Init Model
 use Artisaninweb\SoapWrapper\SoapWrapper;
 
-
-// Handel
 use serwin35\IluoIntegration\Models\Handel\Handel_DodajNoweZamowienie;
-use serwin35\IluoIntegration\Models\Handel\Handel_DodajNoweZamowienieResponse;
 use serwin35\IluoIntegration\Models\Handel\Handel_DodajNoweZamowienieDoDostawcyExt;
 use serwin35\IluoIntegration\Models\Handel\Handel_DodajNoweZamowienieDoDostawcyExtResponse;
 use serwin35\IluoIntegration\Models\Handel\Handel_DodajNoweZamowienieOdOdbiorcyExt;
 use serwin35\IluoIntegration\Models\Handel\Handel_DodajNoweZamowienieOdOdbiorcyExtResponse;
+use serwin35\IluoIntegration\Models\Handel\Handel_DodajNoweZamowienieResponse;
 use serwin35\IluoIntegration\Models\Handel\Handel_PobierzDokumentHandlowyPoId;
 use serwin35\IluoIntegration\Models\Handel\Handel_PobierzDokumentHandlowyPoIdResponse;
 use serwin35\IluoIntegration\Models\Handel\Handel_PobierzLokalizacjeHandlowe;
@@ -20,8 +18,6 @@ use serwin35\IluoIntegration\Models\Handel\Handel_PobierzLokalizacjeHandloweResp
 use serwin35\IluoIntegration\Models\Handel\Handel_PobierzZamowieniePoId;
 use serwin35\IluoIntegration\Models\Handel\Handel_PobierzZamowieniePoIdResponse;
 
-
-// Kontrahenci
 use serwin35\IluoIntegration\Models\Kontrahenci\Kontrahenci_AktualizujKontrahenta;
 use serwin35\IluoIntegration\Models\Kontrahenci\Kontrahenci_AktualizujKontrahentaResponse;
 use serwin35\IluoIntegration\Models\Kontrahenci\Kontrahenci_DodajNowegoKontrahenta;
@@ -31,8 +27,17 @@ use serwin35\IluoIntegration\Models\Kontrahenci\Kontrahenci_PobierzGrupyResponse
 use serwin35\IluoIntegration\Models\Kontrahenci\Kontrahenci_PobierzKontrahentaPoId;
 use serwin35\IluoIntegration\Models\Kontrahenci\Kontrahenci_PobierzKontrahentaPoIdResponse;
 
+use serwin35\IluoIntegration\Models\Magazyn\Magazyn_AktualizujDokumentMagazynowy;
+use serwin35\IluoIntegration\Models\Magazyn\Magazyn_AktualizujDokumentMagazynowyResponse;
+use serwin35\IluoIntegration\Models\Magazyn\Magazyn_PobierzDokumentMagazynowyPoId;
+use serwin35\IluoIntegration\Models\Magazyn\Magazyn_PobierzDokumentMagazynowyPoIdResponse;
+use serwin35\IluoIntegration\Models\Magazyn\Magazyn_PobierzDokumentMagazynowyPoNumerze;
+use serwin35\IluoIntegration\Models\Magazyn\Magazyn_PobierzDokumentMagazynowyPoNumerzeResponse;
 
-// Słowniki
+use serwin35\IluoIntegration\Models\Magazyn\Magazyn_PobierzMagazyny;
+use serwin35\IluoIntegration\Models\Magazyn\Magazyn_PobierzMagazynyResponse;
+use serwin35\IluoIntegration\Models\Parametry\Parametry_PobierzWszystkieKategorie;
+use serwin35\IluoIntegration\Models\Parametry\Parametry_PobierzWszystkieKategorieResponse;
 use serwin35\IluoIntegration\Models\Slowniki\Slowniki_PobierzJednostkiMiary;
 use serwin35\IluoIntegration\Models\Slowniki\Slowniki_PobierzJednostkiMiaryResponse;
 use serwin35\IluoIntegration\Models\Slowniki\Slowniki_PobierzMetodyPlatnosci;
@@ -40,24 +45,14 @@ use serwin35\IluoIntegration\Models\Slowniki\Slowniki_PobierzMetodyPlatnosciResp
 use serwin35\IluoIntegration\Models\Slowniki\Slowniki_PobierzSposobyDostawy;
 use serwin35\IluoIntegration\Models\Slowniki\Slowniki_PobierzSposobyDostawyResponse;
 
-
-// Magazyn
-use serwin35\IluoIntegration\Models\Magazyn\Magazyn_AktualizujDokumentMagazynowy;
-use serwin35\IluoIntegration\Models\Magazyn\Magazyn_AktualizujDokumentMagazynowyResponse;
-use serwin35\IluoIntegration\Models\Magazyn\Magazyn_PobierzDokumentMagazynowyPoId;
-use serwin35\IluoIntegration\Models\Magazyn\Magazyn_PobierzDokumentMagazynowyPoIdResponse;
-use serwin35\IluoIntegration\Models\Magazyn\Magazyn_PobierzDokumentMagazynowyPoNumerze;
-use serwin35\IluoIntegration\Models\Magazyn\Magazyn_PobierzDokumentMagazynowyPoNumerzeResponse;
-use serwin35\IluoIntegration\Models\Magazyn\Magazyn_PobierzMagazyny;
-use serwin35\IluoIntegration\Models\Magazyn\Magazyn_PobierzMagazynyResponse;
-
-
-// Parametry
-use serwin35\IluoIntegration\Models\Parametry\Parametry_PobierzWszystkieKategorie;
-use serwin35\IluoIntegration\Models\Parametry\Parametry_PobierzWszystkieKategorieResponse;
-
-
-//Towar
+use serwin35\IluoIntegration\Models\Sys_PobierzTabeleSystemowe;
+use serwin35\IluoIntegration\Models\Sys_PobierzTabeleSystemoweResponse;
+use serwin35\IluoIntegration\Models\Tagi_PobierzIdTagowDlaObiektu;
+use serwin35\IluoIntegration\Models\Tagi_PobierzIdTagowDlaObiektuResponse;
+use serwin35\IluoIntegration\Models\Tagi_PobierzTag;
+use serwin35\IluoIntegration\Models\Tagi_PobierzTagResponse;
+use serwin35\IluoIntegration\Models\Tagi_UstawTagiDlaObiektu;
+use serwin35\IluoIntegration\Models\Tagi_UstawTagiDlaObiektuResponse;
 use serwin35\IluoIntegration\Models\Towary\Towary_AktualizujTowarPoId;
 use serwin35\IluoIntegration\Models\Towary\Towary_AktualizujTowarPoIdResponse;
 use serwin35\IluoIntegration\Models\Towary\Towary_AktualizujTowarPoIndeksie;
@@ -68,30 +63,23 @@ use serwin35\IluoIntegration\Models\Towary\Towary_DodajNowyTowar;
 use serwin35\IluoIntegration\Models\Towary\Towary_DodajNowyTowarResponse;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzGrupy;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzGrupyResponse;
+use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowy;
+use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyResponse;
+use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantow;
+use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantowResponse;
+use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantu;
+use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantuPoIndeksach;
+use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantuPoIndeksachResponse;
+use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantuResponse;
+
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzTowarPoId;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzTowarPoIdResponse;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzTowarPoIndeksie;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzTowarPoIndeksieResponse;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzTypyCen;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzTypyCenResponse;
-use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowy;
-use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyResponse;
-use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantow;
-use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantowResponse;
-
-
-//Dodatkowe
 use serwin35\IluoIntegration\Models\extended_GetQueryResults;
 use serwin35\IluoIntegration\Models\extended_GetQueryResultsResponse;
-
-use serwin35\IluoIntegration\Models\Tagi_PobierzIdTagowDlaObiektu;
-use serwin35\IluoIntegration\Models\Tagi_PobierzIdTagowDlaObiektuResponse;
-use serwin35\IluoIntegration\Models\Tagi_UstawTagiDlaObiektu;
-use serwin35\IluoIntegration\Models\Tagi_UstawTagiDlaObiektuResponse;
-use serwin35\IluoIntegration\Models\Tagi_PobierzTag;
-use serwin35\IluoIntegration\Models\Tagi_PobierzTagResponse;
-use serwin35\IluoIntegration\Models\Sys_PobierzTabeleSystemowe;
-use serwin35\IluoIntegration\Models\Sys_PobierzTabeleSystemoweResponse;
 
 class IluoApiConnect
 {
@@ -152,7 +140,9 @@ class IluoApiConnect
                     Towary_PobierzTowarPoIndeksie::class,       Towary_PobierzTowarPoIndeksieResponse::class,
                     Towary_PobierzTypyCen::class,               Towary_PobierzTypyCenResponse::class,
                     Towary_PobierzStanMagazynowy::class,        Towary_PobierzStanMagazynowyResponse::class,
-                    Towary_PobierzStanMagazynowyWariantow::class,Towary_PobierzStanMagazynowyWariantowResponse::class,
+                    Towary_PobierzStanMagazynowyWariantow::class, Towary_PobierzStanMagazynowyWariantowResponse::class,
+                    Towary_PobierzStanMagazynowyWariantu::class, Towary_PobierzStanMagazynowyWariantuResponse::class,
+                    Towary_PobierzStanMagazynowyWariantuPoIndeksach::class, Towary_PobierzStanMagazynowyWariantuPoIndeksachResponse::class,
 
                     //Dodatkowe
                     extended_GetQueryResults::class,            extended_GetQueryResultsResponse::class,
@@ -338,9 +328,27 @@ class IluoApiConnect
         return $response->get();
     }
 
+    public function Towary_PobierzStanMagazynowyWariantu($idTowaru, $idMagazynu, $idWariantu, $razemZRezerwacjami = false)
+    {
+        $response = $this->soapWrapper->call('Iluo.Towary_PobierzStanMagazynowyWariantu', [new Towary_PobierzStanMagazynowyWariantu(
+            $this->__sessionId(),
+            $idTowaru,
+            $idWariantu,
+            $idMagazynu,
+            $razemZRezerwacjami
+        )]);
+        return $response->get();
+    }
+
     public function Towary_PobierzStanMagazynowyWariantow($idTowaru, $idMagazynu, $razemZRezerwacjami = false)
     {
         $response = $this->soapWrapper->call('Iluo.Towary_PobierzStanMagazynowyWariantow', [new Towary_PobierzStanMagazynowyWariantow($this->__sessionId(), $idTowaru, $idMagazynu, $razemZRezerwacjami)]);
+        return $response->get();
+    }
+
+    public function Towary_PobierzStanMagazynowyWariantuPoIndeksach($indeksTowaru, $kodWariantu, $idMagazynu, $razemZRezerwacjami = false)
+    {
+        $response = $this->soapWrapper->call('Iluo.Towary_PobierzStanMagazynowyWariantuPoIndeksach', [new Towary_PobierzStanMagazynowyWariantuPoIndeksach($this->__sessionId(), $indeksTowaru, $kodWariantu, $idMagazynu, $razemZRezerwacjami)]);
         return $response->get();
     }
 
