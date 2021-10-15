@@ -43,7 +43,7 @@ class Towary_PobierzStanMagazynowyWariantowPoIndeksie
   }
 }
 
-class Towary_PobierzStanMagazynowyWariantowPoIndeksiehResponse
+class Towary_PobierzStanMagazynowyWariantowPoIndeksieResponse
 {
 
   protected $Towary_PobierzStanMagazynowyWariantowPoIndeksiehResult;
