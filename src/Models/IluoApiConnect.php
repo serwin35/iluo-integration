@@ -66,12 +66,14 @@ use serwin35\IluoIntegration\Models\Towary\Towary_PobierzGrupyResponse;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowy;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyResponse;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantow;
+use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantowPoIndeksie;
+use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantowPoIndeksieResponse;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantowResponse;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantu;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantuPoIndeksach;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantuPoIndeksachResponse;
-use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantuResponse;
 
+use serwin35\IluoIntegration\Models\Towary\Towary_PobierzStanMagazynowyWariantuResponse;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzTowarPoId;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzTowarPoIdResponse;
 use serwin35\IluoIntegration\Models\Towary\Towary_PobierzTowarPoIndeksie;
@@ -141,6 +143,7 @@ class IluoApiConnect
                     Towary_PobierzTypyCen::class,               Towary_PobierzTypyCenResponse::class,
                     Towary_PobierzStanMagazynowy::class,        Towary_PobierzStanMagazynowyResponse::class,
                     Towary_PobierzStanMagazynowyWariantow::class, Towary_PobierzStanMagazynowyWariantowResponse::class,
+                    Towary_PobierzStanMagazynowyWariantowPoIndeksie::class, Towary_PobierzStanMagazynowyWariantowPoIndeksieResponse::class,
                     Towary_PobierzStanMagazynowyWariantu::class, Towary_PobierzStanMagazynowyWariantuResponse::class,
                     Towary_PobierzStanMagazynowyWariantuPoIndeksach::class, Towary_PobierzStanMagazynowyWariantuPoIndeksachResponse::class,
 
@@ -343,6 +346,12 @@ class IluoApiConnect
     public function Towary_PobierzStanMagazynowyWariantow($idTowaru, $idMagazynu, $razemZRezerwacjami = false)
     {
         $response = $this->soapWrapper->call('Iluo.Towary_PobierzStanMagazynowyWariantow', [new Towary_PobierzStanMagazynowyWariantow($this->__sessionId(), $idTowaru, $idMagazynu, $razemZRezerwacjami)]);
+        return $response->get();
+    }
+
+    public function Towary_PobierzStanMagazynowyWariantowPoIndeksie($indeksTowaru, $idMagazynu, $razemZRezerwacjami = false)
+    {
+        $response = $this->soapWrapper->call('Iluo.Towary_PobierzStanMagazynowyWariantowPoIndeksie', [new Towary_PobierzStanMagazynowyWariantowPoIndeksie($this->__sessionId(), $indeksTowaru, $idMagazynu, $razemZRezerwacjami)]);
         return $response->get();
     }
 
