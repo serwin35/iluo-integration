@@ -46,15 +46,15 @@ class Towary_PobierzStanMagazynowyWariantowPoIndeksie
 class Towary_PobierzStanMagazynowyWariantowPoIndeksieResponse
 {
 
-  protected $Towary_PobierzStanMagazynowyWariantowPoIndeksiehResult;
+  protected $Towary_PobierzStanMagazynowyWariantowPoIndeksieResult;
 
-  public function __construct($Towary_PobierzStanMagazynowyWariantowPoIndeksiehResult)
+  public function __construct($Towary_PobierzStanMagazynowyWariantowPoIndeksieResult)
   {
-    $this->Towary_PobierzStanMagazynowyWariantowPoIndeksiehResult = $Towary_PobierzStanMagazynowyWariantowPoIndeksiehResult;
+    $this->Towary_PobierzStanMagazynowyWariantowPoIndeksieResult = $Towary_PobierzStanMagazynowyWariantowPoIndeksieResult;
   }
 
   public function get()
   {
-    return $this->Towary_PobierzStanMagazynowyWariantowPoIndeksiehResult;
+    return $this->Towary_PobierzStanMagazynowyWariantowPoIndeksieResult;
   }
 }
